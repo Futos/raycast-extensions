@@ -67,12 +67,12 @@ export default function CollectionCalendar() {
     return (
       <List>
         <List.EmptyView
-          title="Adresse nicht eingestellt"
-          description="Bitte trage deine Berliner Adresse in den Einstellungen ein."
+          title="Address Not Configured"
+          description="Please enter your Berlin address in the extension preferences."
           icon={Icon.House}
           actions={
             <ActionPanel>
-              <Action title="Einstellungen ÖFfnen" icon={Icon.Gear} onAction={openExtensionPreferences} />
+              <Action title="Open Preferences" icon={Icon.Gear} onAction={openExtensionPreferences} />
             </ActionPanel>
           }
         />
@@ -84,13 +84,13 @@ export default function CollectionCalendar() {
     return (
       <List>
         <List.EmptyView
-          title="Fehler beim Laden"
-          description={errorMsg || "Abfuhrkalender konnte nicht geladen werden."}
+          title="Failed to Load"
+          description={errorMsg || "Could not load the collection calendar."}
           icon={Icon.ExclamationMark}
           actions={
             <ActionPanel>
-              <Action.OpenInBrowser title="BSR-Kalender ÖFfnen" url={BSR_CALENDAR_URL} icon={Icon.Globe} />
-              <Action title="Einstellungen ÖFfnen" icon={Icon.Gear} onAction={openExtensionPreferences} />
+              <Action.OpenInBrowser title="Open BSR Calendar" url={BSR_CALENDAR_URL} icon={Icon.Globe} />
+              <Action title="Open Preferences" icon={Icon.Gear} onAction={openExtensionPreferences} />
             </ActionPanel>
           }
         />
@@ -105,12 +105,12 @@ export default function CollectionCalendar() {
     <List isLoading={state === "loading"} navigationTitle={`${street} ${houseNumber}`}>
       {sortedDates.length === 0 && state === "done" ? (
         <List.EmptyView
-          title="Keine Abholtermine gefunden"
-          description="Für die nächsten zwei Monate sind keine Abholtermine eingetragen."
+          title="No Collection Dates Found"
+          description="No collection dates are scheduled for the next two months."
           icon={Icon.Calendar}
           actions={
             <ActionPanel>
-              <Action.OpenInBrowser title="BSR-Kalender ÖFfnen" url={BSR_CALENDAR_URL} icon={Icon.Globe} />
+              <Action.OpenInBrowser title="Open BSR Calendar" url={BSR_CALENDAR_URL} icon={Icon.Globe} />
             </ActionPanel>
           }
         />
@@ -130,13 +130,13 @@ export default function CollectionCalendar() {
               actions={
                 <ActionPanel>
                   <Action.CopyToClipboard
-                    title="Datum Kopieren"
+                    title="Copy Date"
                     content={`${label}: ${summaries}`}
                     shortcut={{ modifiers: ["cmd"], key: "c" }}
                   />
-                  <Action.OpenInBrowser title="BSR-Kalender ÖFfnen" url={BSR_CALENDAR_URL} icon={Icon.Globe} />
+                  <Action.OpenInBrowser title="Open BSR Calendar" url={BSR_CALENDAR_URL} icon={Icon.Globe} />
                   <Action
-                    title="Einstellungen ÖFfnen"
+                    title="Open Preferences"
                     icon={Icon.Gear}
                     onAction={openExtensionPreferences}
                     shortcut={{ modifiers: ["cmd", "shift"], key: "," }}

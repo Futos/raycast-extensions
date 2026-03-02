@@ -86,7 +86,7 @@ export default function SearchWaste() {
 
   const browserSearchAction = (
     <Action.OpenInBrowser
-      title="Auf BSR.de Suchen"
+      title="Search on BSR.de"
       url={`${BSR_BASE_URL}suche?q=${encodeURIComponent(searchText || "Abfall")}`}
       icon={Icon.Globe}
     />
@@ -94,14 +94,10 @@ export default function SearchWaste() {
 
   if (error && !data) {
     return (
-      <List
-        searchBarPlaceholder="Abfallart eingeben (z.B. Pfanne, Batterie...)"
-        onSearchTextChange={setSearchText}
-        throttle
-      >
+      <List searchBarPlaceholder="Enter waste type (e.g. pan, battery...)" onSearchTextChange={setSearchText} throttle>
         <List.EmptyView
-          title="BSR-Datenbank nicht verfügbar"
-          description={searchText ? `Auf BSR.de nach "${searchText}" suchen` : "Auf BSR.de suchen"}
+          title="BSR Database Unavailable"
+          description={searchText ? `Search BSR.de for "${searchText}"` : "Search on BSR.de"}
           icon={Icon.Globe}
           actions={<ActionPanel>{browserSearchAction}</ActionPanel>}
         />
@@ -112,14 +108,14 @@ export default function SearchWaste() {
   return (
     <List
       isLoading={isLoading}
-      searchBarPlaceholder="Abfallart eingeben (z.B. Pfanne, Batterie...)"
+      searchBarPlaceholder="Enter waste type (e.g. pan, battery...)"
       onSearchTextChange={setSearchText}
       throttle
     >
       {filtered.length === 0 && !isLoading ? (
         <List.EmptyView
-          title={searchText ? `Nichts gefunden für "${searchText}"` : "Abfallart eingeben"}
-          description="Auf BSR.de suchen"
+          title={searchText ? `No results for "${searchText}"` : "Enter a waste type"}
+          description="Search on BSR.de"
           icon={Icon.MagnifyingGlass}
           actions={<ActionPanel>{browserSearchAction}</ActionPanel>}
         />
@@ -142,10 +138,10 @@ export default function SearchWaste() {
               ]}
               actions={
                 <ActionPanel>
-                  <Action.OpenInBrowser title="Auf BSR.de Ansehen" url={buildDetailUrl(item)} icon={Icon.Globe} />
+                  <Action.OpenInBrowser title="View on BSR.de" url={buildDetailUrl(item)} icon={Icon.Globe} />
                   {tip && (
                     <Action.CopyToClipboard
-                      title="Entsorgungshinweis Kopieren"
+                      title="Copy Disposal Tip"
                       content={tip}
                       shortcut={{ modifiers: ["cmd"], key: "c" }}
                     />

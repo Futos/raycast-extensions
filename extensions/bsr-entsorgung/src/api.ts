@@ -24,7 +24,7 @@ export async function getAddressId(street: string, houseNumber: string): Promise
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Address lookup failed: ${res.status}`);
   const data = (await res.json()) as Array<{ value: string; label: string }>;
-  if (!Array.isArray(data) || data.length === 0) throw new Error("Adresse nicht gefunden");
+  if (!Array.isArray(data) || data.length === 0) throw new Error("Address not found");
   return data[0].value;
 }
 

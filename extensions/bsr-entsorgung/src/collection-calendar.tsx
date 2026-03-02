@@ -2,10 +2,7 @@ import { Action, ActionPanel, Icon, List, getPreferenceValues, openExtensionPref
 import { useEffect, useState } from "react";
 import { CollectionEvent, formatDate, getAddressId, getCalendarICS, parseICS } from "./api";
 
-interface Preferences {
-  street: string;
-  houseNumber: string;
-}
+// Preferences type is auto-generated in raycast-env.d.ts
 
 const BSR_CALENDAR_URL = "https://www.bsr.de/abfuhrkalender";
 
